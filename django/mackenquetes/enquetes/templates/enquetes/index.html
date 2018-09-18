@@ -1,0 +1,9 @@
+{% if enquetes %}
+    <ul>
+        {% for enquete in enquetes %}
+        <li><a href="{% url 'enquetes:detalhes' enquete.id %}">{{ enquete.enunciado }}</a></li>
+        {% endfor %}
+    <ul>
+{% else %}
+    <p>Não há enquetes para mostrar.</p>
+{% endif %}
