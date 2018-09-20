@@ -1,9 +1,11 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
+from flask import render_template
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
 class Pergunta(db.Model):
@@ -24,4 +26,18 @@ class Escolha(db.Model):
     pergunta_id = db.Column(db.Integer, db.ForeignKey('pergunta.id'), nullable=False)
 
     def __repr__(self):
-        return '<Escolha %r>' % self.title
+        return '<Escolha %r, Votos %r>' % (self.texto, self.votos)
+
+
+@app.route('/')
+def index():
+   return render_template('index.html', enquetes=Pergunta.query.all())
+
+@app.route('/resultados/<int:pergunta_id>')
+def resultados(pergunta_id):
+   return render_template('resultados.html', resultado=Pergunta.query.filter_by(id=pergunta_id))
+   
+if __name__ == '__main__':
+   app.run()
+
+
