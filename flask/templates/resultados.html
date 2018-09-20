@@ -4,11 +4,14 @@
     <title>MackEnquetes</title>
     <meta charset="utf-8">
   </head>
-  <body>
+  <body> 
+      {% for pergunta in perguntas %}
+    <h1>{{ pergunta.enunciado}}</h1>
+      {% endfor %}
       <ul>
-        {% for r in resultado %}
-          <li>{{r.escolha.texto}} -- {{r.escolha.votos}}</li>
-        {% endfor %}
+        {% for pergunta in perguntas %}
+          <li>{{ pergunta.escolha.texto }} -- {{ pergunta.escolha.votos }} votos</li>
+        {% endfor %} 
       <ul>
         <a href = "{{ url_for('index') }}">Voltar</a>
   </body>

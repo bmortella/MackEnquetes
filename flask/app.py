@@ -13,7 +13,7 @@ class Pergunta(db.Model):
     enunciado = db.Column(db.String(200), unique=True, nullable=False)
     data_pub = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
 
-    escolha = db.relationship('Escolha', backref='person', lazy=True)
+    escolha = db.relationship('Escolha', backref='pergunta', lazy=False)
 
     def __repr__(self):
         return '<Pergunta %r>' % self.enunciado
@@ -35,9 +35,7 @@ def index():
 
 @app.route('/resultados/<int:pergunta_id>')
 def resultados(pergunta_id):
-   return render_template('resultados.html', resultado=Pergunta.query.filter_by(id=pergunta_id))
-   
+   return render_template('resultados.html', perguntas=Pergunta.query.filter_by(id=pergunta_id))
+
 if __name__ == '__main__':
    app.run()
-
-
