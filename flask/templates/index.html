@@ -8,7 +8,7 @@
     {% if enquetes %}
       <ul>
           {% for enquete in enquetes %}
-          <li><a href = "{{ url_for('resultados', pergunta_id=enquete.id) }}">{{ enquete.enunciado }}</a></li>
+          <li><a href = "{{ url_for('detalhes', pergunta_id=enquete.id) }}">{{ enquete.enunciado }}</a></li>
           {% endfor %}
       <ul>
     {% else %}

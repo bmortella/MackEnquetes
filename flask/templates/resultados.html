@@ -5,12 +5,12 @@
     <meta charset="utf-8">
   </head>
   <body> 
-      {% for pergunta in perguntas %}
-    <h1>{{ pergunta.enunciado}}</h1>
-      {% endfor %}
+      
+    <h1>{{ pergunta }}</h1>
+
       <ul>
-        {% for pergunta in perguntas %}
-          <li>{{ pergunta.escolha.texto }} -- {{ pergunta.escolha.votos }} votos</li>
+        {% for escolha in pergunta.escolha %}
+          <li>{{ escolha.texto }} -- {{ escolha.votos }} votos</li>
         {% endfor %} 
       <ul>
         <a href = "{{ url_for('index') }}">Voltar</a>

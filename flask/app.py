@@ -4,7 +4,7 @@ from datetime import datetime
 from flask import render_template
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
@@ -17,6 +17,9 @@ class Pergunta(db.Model):
 
     def __repr__(self):
         return '<Pergunta %r>' % self.enunciado
+
+    def __str__(self):
+        return self.enunciado
 
 class Escolha(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -35,7 +38,7 @@ def index():
 
 @app.route('/resultados/<int:pergunta_id>')
 def resultados(pergunta_id):
-   return render_template('resultados.html', perguntas=Pergunta.query.filter_by(id=pergunta_id))
+   return render_template('resultados.html', pergunta=Pergunta.query.get_or_404(pergunta_id))
 
 if __name__ == '__main__':
-   app.run()
+   app.run(debug=True)
