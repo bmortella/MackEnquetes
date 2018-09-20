@@ -7,7 +7,7 @@
   <body>
       <ul>
         {% for r in resultado %}
-          <li>{{r.texto}} -- {{r.votos}}</li>
+          <li>{{r.escolha.texto}} -- {{r.escolha.votos}}</li>
         {% endfor %}
       <ul>
         <a href = "{{ url_for('index') }}">Voltar</a>
