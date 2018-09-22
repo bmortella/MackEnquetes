@@ -1,9 +1,47 @@
-{% if enquetes %}
-    <ul>
-        {% for enquete in enquetes %}
-        <li><a href="{% url 'enquetes:detalhes' enquete.id %}">{{ enquete.enunciado }}</a></li>
-        {% endfor %}
-    <ul>
-{% else %}
-    <p>Não há enquetes para mostrar.</p>
-{% endif %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>MackEnquetes</title>
+		<link rel="stylesheet" type="text/css" href="{% static 'enquetes/style.css' %}">
+	</head>
+	<body>
+		<header class="title_cont">
+			<article class="title">
+				<h1>Mack Enquetes</h1>
+			</article>
+			<article>
+				<h1 class="m">/ M /</h1>
+			</article>
+		</header>
+		<section class="outter">
+			<section class="inner">
+				<article class="title">
+					<h2> - Questions -</h2>
+				</article>
+				<article class="perguntas">
+					{% if enquetes %}
+					    <ul>
+					        {% for enquete in enquetes %}
+					        	<li class="enun">
+					        		<p><a href="{% url 'enquetes:detalhes' enquete.id %}">img</a></p>
+					        		<p>{{ enquete.enunciado }}</p>
+					        	</li>
+					        {% endfor %}
+					    </ul>
+					{% else %}
+					    <section>
+					    	<article>
+					    		<p>Sorry we're out of questions</p>
+					    	</article>
+					    </section>
+					{% endif %}
+				</article>
+				<footer>
+					<p>Powered by</p>
+					<p>FAZ O WHILE</p>
+				</footer>
+			</section>
+		</section>
+	</body>
+</html>

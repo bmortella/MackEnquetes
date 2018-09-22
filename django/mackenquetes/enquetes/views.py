@@ -11,7 +11,7 @@ class IndexView(generic.ListView):
     context_object_name = "enquetes"
 
     def get_queryset(self):
-        enquetes = Pergunta.objects.all()[:5]
+        enquetes = Pergunta.objects.all()[:6]
         return enquetes
 
 class DetalhesView(generic.DetailView):
