@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <title>MackEnquetes</title>
+    <meta charset="utf-8">
+  </head>
+  <body> 
+      
+    <h1>{{ pergunta }}</h1>
+
+      <ul>
+        {% for escolha in pergunta.escolha %}
+          <li>{{ escolha.texto }} -- {{ escolha.votos }} votos</li>
+        {% endfor %} 
+      <ul>
+        <a href = "{{ url_for('index') }}">Voltar</a>
+  </body>
+</html>

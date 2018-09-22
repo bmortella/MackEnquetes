@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <title>MackEnquetes</title>
+    <meta charset="utf-8">
+  </head>
+  <body>
+    {% if enquetes %}
+      <ul>
+          {% for enquete in enquetes %}
+          <li><a href = "{{ url_for('detalhes', pergunta_id=enquete.id) }}">{{ enquete.enunciado }}</a></li>
+          {% endfor %}
+      <ul>
+    {% else %}
+      <p>Não há enquetes para mostrar.</p>
+    {% endif %} 
+  </body>
+</html>
