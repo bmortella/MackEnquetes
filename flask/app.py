@@ -25,7 +25,7 @@ class Pergunta(db.Model):
 class Escolha(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     texto = db.Column(db.String(200), unique=True, nullable=False)
-    votos = db.Column(db.Integer)
+    votos = db.Column(db.Integer, default=0)
 
     pergunta_id = db.Column(db.Integer, db.ForeignKey('pergunta.id'), nullable=False)
 
@@ -47,6 +47,10 @@ def detalhes(pergunta_id):
         if not request.form.get('escolha'):
             flash('Escolha uma opção')
         else:
+            escolha = Escolha.query.filter_by(id=request.form['escolha']).first()
+            escolha.votos = escolha.votos + 1
+            db.session.commit()
+
             return redirect(url_for('resultados', pergunta_id=pergunta_id))
 
     return render_template('detalhes.html', pergunta=Pergunta.query.get_or_404(pergunta_id))

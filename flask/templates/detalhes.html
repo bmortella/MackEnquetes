@@ -11,7 +11,7 @@
          <div class>
             {{ message }}
          </div>
-      {%- endfor %}
+    {%- endfor %}
 
     <form action = "{{ request.path }}" method = "POST">
         {% for escolha in pergunta.escolha %}
@@ -20,6 +20,7 @@
         {% endfor %}
         <input type="submit" value="Votar">
     </form>
+
     <a href = "{{ url_for('index') }}">Voltar</a>
   </body>
 </html>
