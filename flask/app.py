@@ -1,9 +1,10 @@
-from flask import Flask
+from flask import Flask, request, flash, url_for, redirect, render_template
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
-from flask import render_template
+
 
 app = Flask(__name__)
+app.config['SECRET_KEY'] = "random string"
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
@@ -39,6 +40,17 @@ def index():
 @app.route('/resultados/<int:pergunta_id>')
 def resultados(pergunta_id):
    return render_template('resultados.html', pergunta=Pergunta.query.get_or_404(pergunta_id))
+
+@app.route('/detalhes/<int:pergunta_id>', methods=['GET', 'POST'])
+def detalhes(pergunta_id):
+    if request.method == 'POST':
+        if not request.form.get('escolha'):
+            flash('Escolha uma opção')
+        else:
+            return redirect(url_for('resultados', pergunta_id=pergunta_id))
+
+    return render_template('detalhes.html', pergunta=Pergunta.query.get_or_404(pergunta_id))
+
 
 if __name__ == '__main__':
    app.run(debug=True)

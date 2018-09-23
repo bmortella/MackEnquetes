@@ -5,6 +5,21 @@
     <meta charset="utf-8">
   </head>
   <body>
+    <h1>{{ pergunta }}</h1>
 
+    {%- for category, message in get_flashed_messages(with_categories = true) %}
+         <div class>
+            {{ message }}
+         </div>
+      {%- endfor %}
+
+    <form action = "{{ request.path }}" method = "POST">
+        {% for escolha in pergunta.escolha %}
+          <input type="radio" name="escolha" id="escolha{{ loop.index }}" value="{{ escolha.id }}">
+          <label for="escolha{{ loop.index }}">{{ escolha.texto }}</label><br>
+        {% endfor %}
+        <input type="submit" value="Votar">
+    </form>
+    <a href = "{{ url_for('index') }}">Voltar</a>
   </body>
 </html>
