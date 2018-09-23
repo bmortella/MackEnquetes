@@ -1,13 +1,18 @@
 from flask import Flask, request, flash, url_for, redirect, render_template
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
+from flask_admin import Admin
+from flask_admin.contrib.sqla import ModelView
 
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = "random string"
+app.config['SECRET_KEY'] = "randomstring"
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
 db = SQLAlchemy(app)
+
+admin = Admin(app)
 
 class Pergunta(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -31,6 +36,9 @@ class Escolha(db.Model):
 
     def __repr__(self):
         return '<Escolha %r, Votos %r>' % (self.texto, self.votos)
+
+admin.add_view(ModelView(Pergunta, db.session))
+admin.add_view(ModelView(Escolha, db.session))
 
 
 @app.route('/')
