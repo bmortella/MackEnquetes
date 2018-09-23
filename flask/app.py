@@ -63,6 +63,17 @@ def detalhes(pergunta_id):
 
     return render_template('detalhes.html', pergunta=Pergunta.query.get_or_404(pergunta_id))
 
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        if not request.form['usuario'] or not request.form['senha']:
+           flash('Digite o Usuário e a Senha')
+
+        else:
+
+            return redirect(url_for('admin.index'))
+
+    return render_template('login.html') 
 
 if __name__ == '__main__':
    app.run(debug=True)
