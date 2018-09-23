@@ -54,6 +54,9 @@ footer{
 	margin: 0px;
 	padding: 0px;
 }
+p{
+	margin: 0px;
+}
 
 /* Css Starts here */
 header{
@@ -62,6 +65,7 @@ header{
 	justify-content: right;
 	width: 100%;
 	background-image: url(img/2.png);
+	background-attachment: fixed;
 	color: white;
 	height: 80px;
 	padding: 0 10px;
@@ -80,7 +84,7 @@ section.inner{
 	min-width: 90%;
 	background-color: rgba(255, 255, 255, 0.985);
 	padding: 20px;
-	border-radius: 0 0 8px 8px;
+	border-radius: 0 0 6px 6px;
 }
 .title{
 	display: flex;
@@ -111,8 +115,60 @@ li{
 	width: 275px;
 	background-color: white;
 	border: 1px solid  rgba(255,255,255,1);
+	padding: 1px;
 	border-radius: 7px;
 	-webkit-box-shadow: 10px 10px 18px -2px rgba(0,0,0,0.15);
 	-moz-box-shadow: 10px 10px 18px -2px rgba(0,0,0,0.15);
 	box-shadow: 10px 10px 18px -2px rgba(0,0,0,0.15);
+}
+article.nani{
+	border-radius: 5px 5px 0px 0;
+	width: 100%;
+	height: 80%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #ececec;
+}
+
+.nani a{
+	display: block;
+	height: 90%;
+	width: 90%;
+	background-color: white;
+}
+.enun{
+	margin: 10px;
+}
+section.blank_cont{
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-content: center;
+}
+section.blank_cont section {
+	background-color: #ececec;
+	width: 80%;
+	border: 1px solid #ececec;
+	border-radius: 7px;
+	-webkit-box-shadow: 10px 10px 18px -2px rgba(0,0,0,0.15);
+	-moz-box-shadow: 10px 10px 18px -2px rgba(0,0,0,0.15);
+	box-shadow: 10px 10px 18px -2px rgba(0,0,0,0.15);
+}
+article.blank{
+	background-repeat: no-repeat;
+	background-position: center;
+	background-image: url(img/oldman.jpg);
+	height: 384px;
+	width: 100%;
+}
+.sorry p{
+	text-align: center;
+	margin: 0 0 10px;
+}
+footer{
+	margin: 20px 0 0;
+}
+.faz{
+	font-family: geo;
 }

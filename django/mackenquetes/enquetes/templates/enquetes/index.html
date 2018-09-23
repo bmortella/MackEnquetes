@@ -1,9 +1,13 @@
 {% load static %}
+
 <!DOCTYPE html>
 <html>
+
 	<head>
 		<title>MackEnquetes</title>
-		<link rel="stylesheet" type="text/css" href="{% static 'enquetes/style.css' %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'enquetes/style_index.css' %}">
+		<link rel="shortcut icon" href="{% static 'enquetes/img/favicon.ico' %}">
+
 	</head>
 	<body>
 		<header class="title_cont">
@@ -19,27 +23,34 @@
 				<article class="title">
 					<h2> - Questions -</h2>
 				</article>
-				<article class="perguntas">
+				<article>
 					{% if enquetes %}
-					    <ul>
+					    <ul class="perguntas_cont">
 					        {% for enquete in enquetes %}
-					        	<li class="enun">
-					        		<p><a href="{% url 'enquetes:detalhes' enquete.id %}">img</a></p>
-					        		<p>{{ enquete.enunciado }}</p>
+					        	<li class="perguntas">
+					        		<article class="nani">
+					        			<a href="{% url 'enquetes:detalhes' enquete.id %}">img</a>
+					        		</article>
+					        		<article>
+					        			<p class="enun">{{ enquete.enunciado }}</p>
+					        		</article>
 					        	</li>
 					        {% endfor %}
 					    </ul>
 					{% else %}
-					    <section>
-					    	<article>
-					    		<p>Sorry we're out of questions</p>
-					    	</article>
-					    </section>
+						<section class="blank_cont">
+						    <section>
+						    	<article class="blank"></article>
+						    	<article class="sorry">
+						    		<p>Sorry but we're out of questions...</p>
+						    	</article>
+						    </section>
+					   	</section>
 					{% endif %}
 				</article>
 				<footer>
 					<p>Powered by</p>
-					<p>FAZ O WHILE</p>
+					<i class="faz">FAZ O WHILE</i>
 				</footer>
 			</section>
 		</section>
