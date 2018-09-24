@@ -1,18 +1,22 @@
 from flask import Flask, request, flash, url_for, redirect, render_template
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
-from flask_admin import Admin
+from flask_admin import Admin, AdminIndexView
 from flask_admin.contrib.sqla import ModelView
-
+from flask_login import UserMixin, LoginManager, current_user, login_user, logout_user
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = "randomstring"
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
+login = LoginManager(app)
 
-admin = Admin(app)
+@login.user_loader
+def load_user(user_id):
+    return Usuario.query.get(user_id)
+
 
 class Pergunta(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -37,8 +41,30 @@ class Escolha(db.Model):
     def __repr__(self):
         return '<Escolha %r, Votos %r>' % (self.texto, self.votos)
 
-admin.add_view(ModelView(Pergunta, db.session))
-admin.add_view(ModelView(Escolha, db.session))
+class Usuario(db.Model, UserMixin):
+    id = db.Column(db.Integer, primary_key=True)
+    usuario = db.Column(db.String(15), unique=True, nullable=False)
+    senha = db.Column(db.String(20), unique=True, nullable=False)
+
+    def __repr__(self):
+        return '<Usuario %r, Senha%r>' % (self.usuario, self.senha)
+
+class NewModelView(ModelView):
+    def is_accessible(self):
+        return current_user.is_authenticated
+    def inaccessible_callback(self, name, **kwargs):
+        return redirect(url_for('login'))
+    
+class NewAdminIndexView(AdminIndexView):
+    def is_accessible(self):
+        return current_user.is_authenticated
+    def inaccessible_callback(self, name, **kwargs):
+        return redirect(url_for('login'))
+
+admin = Admin(app, index_view=NewAdminIndexView())
+admin.add_view(NewModelView(Pergunta, db.session))
+admin.add_view(NewModelView(Escolha, db.session))
+admin.add_view(NewModelView(Usuario, db.session))
 
 
 @app.route('/')
@@ -70,10 +96,25 @@ def login():
            flash('Digite o Usuário e a Senha')
 
         else:
+            exists = db.session.query(db.exists().where(Usuario.usuario == request.form['usuario'] )).scalar()
 
-            return redirect(url_for('admin.index'))
+            if exists:
+                usuario = Usuario.query.filter_by(usuario=request.form['usuario']).first()
+                if usuario.senha ==  request.form['senha']:
 
-    return render_template('login.html') 
+                    login_user(usuario)
+                    return redirect(url_for('admin.index'))
+                else:
+                    flash('Usuário desconhecido ou senha incorreta')
+            else:
+                flash('Usuário desconhecido ou senha incorreta')
+
+    return render_template('login.html')
+
+@app.route('/logout')
+def logout():
+    logout_user()
+    return render_template('logout.html')
 
 if __name__ == '__main__':
    app.run(debug=True)
