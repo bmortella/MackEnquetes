@@ -1,0 +1,125 @@
+/* Fonts and all that stuff */
+
+@font-face{
+	font-family: roboto;
+	src:url(fonts/Roboto.ttf);
+}
+@font-face{
+	font-family: geo;
+	src:url(fonts/geo.ttf);
+}
+@font-face{
+	font-family: grav;
+	src:url(fonts/grav.otf);
+}
+@font-face{
+	font-family: san;
+	src:url(fonts/san.otf);
+}
+@font-face{
+	font-family: quot;
+	src:url(fonts/quot.ttf);
+}
+@font-face{
+	font-family: grav-i;
+	src:url(fonts/grav-i.otf);
+}
+
+/* Reseting navigator's prefix values*/
+
+html, body{
+    margin: 0;
+    padding: 0;
+    min-width: 100%;
+    width: 100%;
+    max-width: 100%;
+    min-height: 100%;
+    height: 100%;
+    max-height: 100%;
+}
+body{
+	font-family: grav;
+}
+ul{
+	padding: 0px;
+}
+h1{
+	margin-block-start: 0;
+	margin-block-end: 0;
+}
+.title_cont{
+	padding: 0px;
+}
+footer{
+	margin: 0px;
+	padding: 0px;
+}
+p{
+	margin: 0px;
+}
+li{
+	list-style-type: none;
+}
+
+/* Common Css Starts here */
+
+header{
+	display: flex;
+	align-content: center;
+	justify-content: right;
+	width: 100%;
+	background-image: url(img/2.png);
+	background-attachment: fixed;
+	color: white;
+	height: 80px;
+	padding: 0 10px;
+}
+
+section.outter{
+	background-color:  rgba(0, 0, 0, 0.8);
+	display: flex;
+	justify-content: center;
+	min-height: 100%;
+	padding: 0px 3.5% 3.5% 3.5%;
+}
+section.inner{
+	min-width: 90%;
+	background-color: rgba(255, 255, 255, 0.985);
+	padding: 20px;
+	border-radius: 0 0 6px 6px;
+}
+.title{
+	display: flex;
+	justify-content: center;
+	font-family: san;
+}
+.title_cont{
+	display: flex;
+	justify-content: space-between;
+}
+.title_cont article{
+	padding: 0px 20px;
+	display: flex;
+	align-items: center;
+}
+h1.m{
+	font-family: quot;
+	font-size: 30px;
+}
+
+footer{
+	height: 5%;
+	margin: 10px 0 0;
+	display: flex;
+	align-items: flex-end;
+}
+.faz{
+	font-family: geo;
+}
+/* Some media screen adjustments in general*/
+
+@media screen and (min-width: 680px){
+	footer{
+		height: 25%;
+	}
+}

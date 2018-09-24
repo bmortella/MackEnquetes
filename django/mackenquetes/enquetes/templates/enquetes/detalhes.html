@@ -1,14 +1,76 @@
-<h1>{{ pergunta.enunciado }}</h1>
+{% load static %}
 
-{% if erro %}<p><strong>{{ erro }}</strong></p>{% endif %}
+<!DOCTYPE html>
+<html>
 
-<form action="{% url 'enquetes:votar' pergunta.id %}" method="post">
-{% csrf_token %}
-{% for escolha in pergunta.escolha_set.all %}
-    <input type="radio" name="escolha" id="escolha{{ forloop.counter }}" value="{{ escolha.id }}">
-    <label for="escolha{{ forloop.counter }}">{{ escolha.texto }}</label><br>
-{% endfor %}
-<input type="submit" value="Votar">
-</form>
-</br>
-<a href="{% url 'enquetes:index' %}">Voltar</a>
+	<head>
+		<title>MackEnquetes</title>
+		<link rel="stylesheet" type="text/css" href="{% static 'enquetes/style_detalhes.css' %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'enquetes/setup.css' %}">
+		<link rel="shortcut icon" href="{% static 'enquetes/img/favicon.ico' %}">
+
+	</head>
+	<body>
+		<header class="title_cont">
+			<article class="title">
+				<h1>Mack Enquetes</h1>
+			</article>
+			<article>
+				<h1 class="m">/ M /</h1>
+			</article>
+		</header>
+		<section class="outter">
+			<section class="inner">
+				<article class="title">
+					<h2> - {{ pergunta.enunciado }} - </h2>
+				</article>
+				<article>
+					{% if erro %}
+					<section class="erro">
+						<p> <strong>{{ erro }}</strong></p>
+					</section>	
+					{% endif %}
+					<section class="formm">
+						<form action="{% url 'enquetes:votar' pergunta.id %}" method="post">
+
+						{% csrf_token %}
+						{% for escolha in pergunta.escolha_set.all %}
+							<article>
+							    <input type="checkbox" name="escolha" id="escolha{{ forloop.counter }}" value="{{ escolha.id }}">
+							    <label for="escolha{{ forloop.counter }}">{{ escolha.texto }}</label>
+							</article>
+						{% endfor %}
+
+						<input type="submit" value="Votar">
+						<input type="reset">
+
+						</form>
+						<article>
+							<a href="{% url 'enquetes:index' %}">Voltar</a>
+						</article>
+					</section>
+				</article>
+				<footer>
+					<article>
+						<p>Powered by</p>
+						<i class="faz">FAZ O WHILE</i>
+					</article>
+				</footer>
+			</section>
+		</section>
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
