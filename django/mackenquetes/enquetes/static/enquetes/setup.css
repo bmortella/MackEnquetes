@@ -60,7 +60,18 @@ p{
 li{
 	list-style-type: none;
 }
-
+ul{
+	margin: 0px;
+}
+a{
+	text-decoration: none;
+	color: black;
+}
+input{
+	font-family: grav;
+	letter-spacing: 1px;
+	border-radius: 2px;
+}
 /* Common Css Starts here */
 
 header{
@@ -108,18 +119,11 @@ h1.m{
 }
 
 footer{
-	height: 5%;
+	height: 50px;
 	margin: 10px 0 0;
 	display: flex;
 	align-items: flex-end;
 }
 .faz{
 	font-family: geo;
-}
-/* Some media screen adjustments in general*/
-
-@media screen and (min-width: 680px){
-	footer{
-		height: 25%;
-	}
 }
