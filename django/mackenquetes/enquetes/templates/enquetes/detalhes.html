@@ -24,9 +24,9 @@
 				<article class="title">
 					<h2> - Questionary - </h2>
 				</article>
-				<section class="d">
-					<section class="form_cont">
-						<article class="formm">
+				<section class="formm_cont">
+					<section class="formm">
+						<article>
 							{% if erro %}
 								<article class="erro">
 									<p> <strong>{{ erro }}</strong></p>
@@ -38,7 +38,7 @@
 							{% csrf_token %}
 							{% for escolha in pergunta.escolha_set.all %}
 								<article class="boxes">
-								    <input type="checkbox" name="escolha" id="escolha{{ forloop.counter }}" value="{{ escolha.id }}">
+								    <input type="radio" name="escolha" id="escolha{{ forloop.counter }}" value="{{ escolha.id }}">
 								    <label for="escolha{{ forloop.counter }}">{{ escolha.texto }}</label>
 								</article>
 							{% endfor %}
@@ -47,10 +47,6 @@
 							<input type="reset" class="reset">
 
 							</form>
-						</article>
-						<article class="image_cont">
-							<article class="img"></article>
-						</article>
 					</section>
 				</section>
 				<section class="return">

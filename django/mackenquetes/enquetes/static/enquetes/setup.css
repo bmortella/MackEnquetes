@@ -40,9 +40,6 @@ html, body{
 body{
 	font-family: grav;
 }
-ul{
-	padding: 0px;
-}
 h1{
 	margin-block-start: 0;
 	margin-block-end: 0;
@@ -126,4 +123,11 @@ footer{
 }
 .faz{
 	font-family: geo;
+}
+
+/* Some screen adjustment*/
+@media screen and (min-width: 1001px){
+	header{
+		background-image: url(img/1.png);
+	}
 }

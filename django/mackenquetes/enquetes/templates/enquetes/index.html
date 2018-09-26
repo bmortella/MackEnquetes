@@ -25,22 +25,19 @@
 					<h2> - Questionary -</h2>
 				</article>
 				<article>
+
 					{% if enquetes %}
-					    <ul class="perguntas_cont">
-					        {% for enquete in enquetes %}
-					        	<li class="perguntas">
-					        		<article class="nani">
-					        			<a href="{% url 'enquetes:detalhes' enquete.id %}">img</a>
-					        		</article>
-					        		<article>
-					        			<p class="enun">{{ enquete.enunciado }}</p>
-					        		</article>
-					        	</li>
-					        {% endfor %}
+					    <ul>
+				        	<li>
+				        		{% for enquete in enquetes %}
+				        			<a href="{% url 'enquetes:detalhes' enquete.id %}">{{ enquete.enunciado }}</a>
+				        		{% endfor %}
+				        	</li>					        
 					    </ul>
 					{% else %}
+
 						<section class="blank_cont">
-						    <section>
+						    <section class="blank_cc">
 						    	<article class="blank"></article>
 						    	<article class="sorry">
 						    		<p>Sorry but we're out of questions...</p>
