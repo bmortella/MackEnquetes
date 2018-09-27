@@ -10,7 +10,6 @@ h2{
 }
 
 ul{
-	min-height: 500px;
 	padding: 70px 0 0;
 }
 li{
@@ -18,7 +17,7 @@ li{
 	width: 600px;
 	display: flex;
 	justify-content: space-around;
-background-color: white;
+	background-color: white;
 	border: 1px solid  rgba(255,255,255,1);
 	padding: 2px;
 	border-radius: 7px;
@@ -34,16 +33,4 @@ article.results{
 	display: flex;
 	justify-content: flex-end;
 	margin: 20px 0 0;
-}
-.return a{
-
-	padding: 3px 10px;
-	border-radius: 3px;
-	border: 1px solid black;
-}
-.return a:hover{
-	-webkit-transition: border-color 0.2s ease-in, color 0.2s ease-in;
-	transition: border-color 0.2s ease-in, color 0.2s ease-in;
-	border-color: #df3c13;
-	color: #df3c13;
 }

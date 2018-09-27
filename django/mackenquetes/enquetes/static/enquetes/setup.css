@@ -30,12 +30,6 @@
 html, body{
     margin: 0;
     padding: 0;
-    min-width: 100%;
-    width: 100%;
-    max-width: 100%;
-    min-height: 100%;
-    height: 100%;
-    max-height: 100%;
 }
 body{
 	font-family: grav;
@@ -76,25 +70,24 @@ header{
 	align-content: center;
 	justify-content: right;
 	width: 100%;
-	background-image: url(img/2.png);
-	background-attachment: fixed;
+	background-color:#ff0000;
+	background-image: 
+		linear-gradient(30deg, #a70000 12%, transparent 12.5%, transparent 87%, #a70000 87.5%, #a70000),
+		linear-gradient(150deg, #a70000 12%, transparent 12.5%, transparent 87%, #a70000 87.5%, #a70000),
+		linear-gradient(30deg, #a70000 12%, transparent 12.5%, transparent 87%, #a70000 87.5%, #a70000),
+		linear-gradient(150deg, #a70000 12%, transparent 12.5%, transparent 87%, #a70000 87.5%, #a70000),
+		linear-gradient(60deg, #C80000 25%, transparent 25.5%, transparent 75%, #C80000 75%, #C80000 ), 
+		linear-gradient(60deg, #C80000 25%, transparent 25.5%, transparent 75%, #C80000 75%, #C80000 );
+	background-size:80px 140px;
+	background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px;
 	color: white;
 	height: 80px;
 	padding: 0 10px;
 }
 
 section.outter{
-	background-color:  rgba(0, 0, 0, 0.8);
-	display: flex;
-	justify-content: center;
 	min-height: 100%;
-	padding: 0px 3.5% 3.5% 3.5%;
-}
-section.inner{
-	min-width: 90%;
-	background-color: rgba(255, 255, 255, 0.985);
-	padding: 20px;
-	border-radius: 0 0 6px 6px;
+	padding: 3.5%;
 }
 .title{
 	display: flex;
@@ -114,20 +107,43 @@ h1.m{
 	font-family: quot;
 	font-size: 30px;
 }
-
+.return a{
+	padding: 3px 10px;
+	border-radius: 3px;
+	border: 1px solid #ff0000;
+	color: #ff0000;
+}
+.return a:hover{
+	-webkit-transition: background-color 0.2s ease-in, color 0.2s ease-in;
+	transition: background-color 0.2s ease-in, color 0.2s ease-in;
+	background-color: #ff0000;
+	color: white;
+}
 footer{
-	height: 50px;
+
+	width: 100%;
 	margin: 10px 0 0;
-	display: flex;
-	align-items: flex-end;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+	background-color: black;
+	color: white;
+	padding: 10px 20px 20px;
+	border-top: 2px solid red;
+
+
 }
 .faz{
 	font-family: geo;
 }
 
 /* Some screen adjustment*/
-@media screen and (min-width: 1001px){
-	header{
-		background-image: url(img/1.png);
+@media screen and (min-width: 1100px){
+
+	ul{
+		min-height: 650px;
+	}
+	.formm_cont{
+		min-height: 650px;
 	}
 }

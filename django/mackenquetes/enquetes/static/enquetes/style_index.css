@@ -1,7 +1,6 @@
 /* Personal use CSS*/
 
 ul{
-	min-height: 500px;
 	display: flex;
 	justify-content: center;
 	padding: 70px 0 0;
@@ -33,7 +32,7 @@ li a{
 li a:hover{
 	-webkit-transition: background-color 0.2s ease-in;
 	transition: background-color 0.2s ease-in;
-	background-color: #df3c13;
+	background-color: #ff0000;
 	color: white;
 }
 .enun{
@@ -45,11 +44,10 @@ section.blank_cont{
 	display: flex;
 	justify-content: center;
 	align-content: center;
-	min-height: 700px;
 }
 section.blank_cc {
 	background-color: #ececec;
-	width: 70%;
+	width: 50%;
 	border: 1px solid #ececec;
 	border-radius: 7px;
 	max-height: 450px;
@@ -60,13 +58,24 @@ section.blank_cc {
 article.blank{
 	background-repeat: no-repeat;
 	background-position: center;
-	background-image: url(img/oldman.jpg);
-	height: 384px;
+	background-image: url(img/oldman_c.jpg);
+	height: 280px;
 	width: 100%;
 }
 .sorry p{
 	text-align: center;
 	margin: 0 0 10px;
-	font-size: 20px;
+	font-size: 15px;
 }
+/* Some screen adjustments*/
 
+@media screen and (min-width: 1100px) {
+	article.blank{
+
+		background-image: url(img/oldman.jpg);
+		height: 360px;
+	}
+	.sorry p{
+		font-size: 20px;
+	}
+}

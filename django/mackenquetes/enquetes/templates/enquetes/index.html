@@ -13,46 +13,45 @@
 	<body>
 		<header class="title_cont">
 			<article class="title">
-				<h1>Mack Enquetes</h1>
+				<h1>MackEnquetes</h1>
 			</article>
 			<article>
 				<h1 class="m">/ M /</h1>
 			</article>
 		</header>
-		<section class="outter">
-			<section class="inner">
-				<article class="title">
-					<h2> - Questionary -</h2>
-				</article>
-				<article>
 
-					{% if enquetes %}
-					    <ul>
-				        	<li>
-				        		{% for enquete in enquetes %}
-				        			<a href="{% url 'enquetes:detalhes' enquete.id %}">{{ enquete.enunciado }}</a>
-				        		{% endfor %}
-				        	</li>					        
-					    </ul>
-					{% else %}
+		<section class="inner">
+			<article class="title">
+				<h2> - Enquetes -</h2>
+			</article>
+			<article>
 
-						<section class="blank_cont">
-						    <section class="blank_cc">
-						    	<article class="blank"></article>
-						    	<article class="sorry">
-						    		<p>Sorry but we're out of questions...</p>
-						    	</article>
-						    </section>
-					   	</section>
-					{% endif %}
-				</article>
-				<footer>
-					<article>
-						<p>Powered by</p>
-						<i class="faz">FAZ O WHILE</i>
-					</article>
-				</footer>
-			</section>
+				{% if enquetes %}
+				    <ul>
+			        	<li>
+			        		{% for enquete in enquetes %}
+			        			<a href="{% url 'enquetes:detalhes' enquete.id %}">{{ enquete.enunciado }}</a>
+			        		{% endfor %}
+			        	</li>					        
+				    </ul>
+				{% else %}
+
+					<section class="blank_cont">
+					    <section class="blank_cc">
+					    	<article class="blank"></article>
+					    	<article class="sorry">
+					    		<p>Desculpe, mas estamos sem perguntas ...</p>
+					    	</article>
+					    </section>
+				   	</section>
+				{% endif %}
+			</article>
 		</section>
+		<footer>
+			<article>
+				<p>Powered by</p>
+				<i class="faz">FAZ O WHILE</i>
+			</article>
+		</footer>
 	</body>
 </html>
