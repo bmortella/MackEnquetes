@@ -1,15 +1,16 @@
 /*Personal use CSS*/
+
 .formm_cont{
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	min-height: 700px;
+	min-height: 500px;
 }
 section.formm{
 	background-color: #ececec;
-	width: 250px;
-	height: 225px;
-	padding: 10px 20px 20px;
+	width: 260px;
+	height: 150px;
+	padding: 20px;
 	border-radius: 5px;
 	display: flex;
 	justify-content: center;
@@ -20,9 +21,12 @@ section.formm{
 }
 h3{
 	font-size: 22.5px;
+	margin: 0px;
 }
+
 .erro p{
 	color:red;
+	text-align: center;
 }
 .boxes{
 	margin: 0 0 5px;
@@ -50,12 +54,21 @@ form article{
 article input{
 	margin: 0 5px 0 0;
 	padding: 3px 5px;
-	background-color: green;
+	background-color: #02a902;
 	color: white;
 	border: 0px;
 }
+article input:hover{
+	-webkit-transition: background-color 0.2s ease-in, color 0.2s ease-in;
+	transition: background-color 0.2s ease-in, color 0.2s ease-in;
+	background-color: green;
+	color: white;
+}
 input.reset{
 	background-color: red;
+}
+input.reset:hover{
+	background-color: #db1e1e;
 }
 article.image_cont{
 	height: 300px;

@@ -25,29 +25,29 @@
 					<h2> - Questionary - </h2>
 				</article>
 				<section class="formm_cont">
-					<section class="formm">
-						<article>
-							{% if erro %}
-								<article class="erro">
-									<p> <strong>{{ erro }}</strong></p>
-								</article>
-							{% endif %}
-							<h3> {{ pergunta.enunciado }} </h3>
-							<form action="{% url 'enquetes:votar' pergunta.id %}" method="post">
+					<article>
+						{% if erro %}
+							<article class="erro">
+								<p> <strong>{{ erro }}</strong></p>
+							</article>
+						{% endif %}
+						<section class="formm">
+							<article>
+								<h3> {{ pergunta.enunciado }} </h3>
+								<form action="{% url 'enquetes:votar' pergunta.id %}" method="post">
+									{% csrf_token %}
+									{% for escolha in pergunta.escolha_set.all %}
+										<article class="boxes">
+										    <input type="radio" name="escolha" id="escolha{{ forloop.counter }}" value="{{ escolha.id }}">
+										    <label for="escolha{{ forloop.counter }}">{{ escolha.texto }}</label>
+										</article>
+									{% endfor %}
 
-							{% csrf_token %}
-							{% for escolha in pergunta.escolha_set.all %}
-								<article class="boxes">
-								    <input type="radio" name="escolha" id="escolha{{ forloop.counter }}" value="{{ escolha.id }}">
-								    <label for="escolha{{ forloop.counter }}">{{ escolha.texto }}</label>
-								</article>
-							{% endfor %}
-
-							<input type="submit" value="Votar">
-							<input type="reset" class="reset">
-
-							</form>
-					</section>
+									<input type="submit" value="Votar">
+									<input type="reset" class="reset">
+								</form>
+						</section>
+					</article>
 				</section>
 				<section class="return">
 					<a href="{% url 'enquetes:index' %}">Voltar</a>

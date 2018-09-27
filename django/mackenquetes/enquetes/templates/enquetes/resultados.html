@@ -1,9 +1,51 @@
-<h1>{{ pergunta.enunciado }}</h1>
+{% load static %}
+<!DOCTYPE html>
+<html>
 
-<ul>
-{% for escolha in pergunta.escolha_set.all %}
-    <li>{{ escolha.texto }} -- {{ escolha.votos }} voto{{ escolha.votos|pluralize }}</li>
-{% endfor %}
-</ul>
+	<head>
+		<title>MackEnquetes</title>
+		<link rel="stylesheet" type="text/css" href="{% static 'enquetes/style_resultado.css' %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'enquetes/setup.css' %}">
+		<link rel="shortcut icon" href="{% static 'enquetes/img/favicon.ico' %}">
 
-<a href="{% url 'enquetes:index' %}">Voltar</a>
+	</head>
+	<body>
+		<header class="title_cont">
+			<article class="title">
+				<h1>Mack Enquetes</h1>
+			</article>
+			<article>
+				<h1 class="m">/ M /</h1>
+			</article>
+		</header>
+		<section class="outter">
+			<section class="inner">
+				<article class="title">
+					<div>
+						<h2>  {{ pergunta.enunciado }} </h2>
+						<h3> Resultados </h3>
+					</div>
+				</article>
+				<article class="results">
+					<ul>
+						{% for escolha in pergunta.escolha_set.all %}
+						    <li>
+						    	<p> {{ escolha.texto }} </p> 
+						    	<p> Votos : {{ escolha.votos }} </p>
+						    </li>
+						{% endfor %}
+					</ul>
+				</article>
+				<section class="return">
+					<a href="{% url 'enquetes:index' %}">Voltar</a>
+				</section>
+				<footer>
+					<article>
+						<p>Powered by</p>
+						<i class="faz">FAZ O WHILE</i>
+					</article>
+				</footer>
+			</section>
+		</section>
+	</body>
+</html>
