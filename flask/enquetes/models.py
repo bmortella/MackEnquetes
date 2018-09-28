@@ -19,7 +19,7 @@ class Pergunta(db.Model):
 
 class Escolha(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    texto = db.Column(db.String(200), unique=True, nullable=False)
+    texto = db.Column(db.String(200), nullable=False)
     votos = db.Column(db.Integer, default=0)
 
     pergunta_id = db.Column(db.Integer, db.ForeignKey('pergunta.id'), nullable=False)

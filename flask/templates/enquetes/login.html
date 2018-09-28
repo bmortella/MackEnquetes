@@ -1,26 +1,28 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <title>MackEnquetes</title>
-    <meta charset="utf-8">
-  </head>
-  <body>
-      <h3>Admin Login</h3>
-      <hr/>
-      
-      
-      <form action = "{{ request.path }}" method = "post">
-         <label for = "name">Usuário</label><br>
-         <input type = "text" name = "usuario"/><br>
-         <label for = "senha">Senha</label><br>
-         <input type = "password" name = "senha" /><br>
-         <input type = "submit" value = "Submit" />
-      </form>
-      
-      {%- for category, message in get_flashed_messages(with_categories = true) %}
-         <div class>
-            {{ message }}
-         </div>
-      {%- endfor %}
-  </body>
+
+	<head>
+		<title>MackEnquetes</title>
+		<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='../../static/style_login.css')}}">
+		<link rel="shortcut icon" type="image/x-icon" href="{{ url_for('static', filename='../../static/img/favicon.ico')}}">
+		<meta charset="utf-8">
+
+	</head>
+	<body>
+		<section class="outter">
+			<article>
+				<h3> Admin Login</h3>
+				<form action = "{{ request.path }}" method = "post">
+					<input type = "text" name = "usuario" placeholder="Usuário"/><br>
+					<input type = "password" name = "senha" placeholder="Senha" /><br>
+					<input type = "submit" value = "Submit" />
+				</form>
+			  	{%- for category, message in get_flashed_messages(with_categories = true) %}
+			        <div class>
+			        	{{ message }}
+			    	</div>
+			    {%- endfor %}
+			</article>
+		</section>
+	</body>
 </html>

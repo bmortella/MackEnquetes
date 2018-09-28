@@ -24,25 +24,28 @@
 				<h2> - Enquetes - </h2>
 			</article>
 			<section class="formm_cont">
-				{%- for category, message in get_flashed_messages(with_categories = true) %}
+				<article>
+					{%- for category, message in get_flashed_messages(with_categories = true) %}
 
-					<article class="erro">
-						<p> <strong>{{ message }}</strong></p>
-					</article>
-				{%- endfor %}
-				<section class="formm">
-					<h3> {{ pergunta }}</h3>
-					<form action = "{{ request.path }}" method = "POST">
-						{% for escolha in pergunta.escolha %}
-							<article class="boxes">
-							    <input type="radio" name="escolha" id="escolha{{ loop.index }}" value="{{ escolha.id }}">
-							    <label for="escolha{{ loop.index }}">{{ escolha.texto }}</label>
-							</article>
-						{% endfor %}
+						<article class="erro">
+							<p> <strong>{{ message }}</strong></p>
+						</article>
+					{%- endfor %}
+					<section class="formm">
+						<article>
+							<h3> {{ pergunta }}</h3>
+							<form action = "{{ request.path }}" method = "POST">
+								{% for escolha in pergunta.escolha %}
+									<article class="boxes">
+									    <input type="radio" name="escolha" id="escolha{{ loop.index }}" value="{{ escolha.id }}">
+									    <label for="escolha{{ loop.index }}">{{ escolha.texto }}</label>
+									</article>
+								{% endfor %}
 
-						<input type="submit" value="Votar">
+								<input type="submit" value="Votar">
 
-					</form>
+							</form>				
+						</article>
 					</section>
 				</article>
 			</section>

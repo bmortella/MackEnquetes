@@ -29,7 +29,7 @@ def create_app():
     admin.add_view(NewModelView(Pergunta, db.session))
     admin.add_view(NewModelView(Escolha, db.session))
     admin.add_view(NewModelView(Usuario, db.session))
-    
+
     return app
 
 if __name__ == "__main__":
