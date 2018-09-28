@@ -4,6 +4,7 @@ from flask_admin.contrib.sqla import ModelView
 from flask_login import current_user, login_user, logout_user
 
 from .models import Usuario, Pergunta, Escolha
+from app import db
 
 enquetes = Blueprint('enquetes', __name__, url_prefix='/enquetes')
 
