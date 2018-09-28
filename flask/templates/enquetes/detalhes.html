@@ -1,26 +1,61 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <title>MackEnquetes</title>
-    <meta charset="utf-8">
-  </head>
-  <body>
-    <h1>{{ pergunta }}</h1>
 
-    {%- for category, message in get_flashed_messages(with_categories = true) %}
-         <div class>
-            {{ message }}
-         </div>
-    {%- endfor %}
+	<head>
+		<title>MackEnquetes</title>
+		<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='../../static/style_detalhes.css')}}">
+		<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='../../static/setup.css')}}">
+		<link rel="shortcut icon" type="image/x-icon" href="{{ url_for('static', filename='../../static/img/favicon.ico')}}">
+		<meta charset="utf-8">
 
-    <form action = "{{ request.path }}" method = "POST">
-        {% for escolha in pergunta.escolha %}
-          <input type="radio" name="escolha" id="escolha{{ loop.index }}" value="{{ escolha.id }}">
-          <label for="escolha{{ loop.index }}">{{ escolha.texto }}</label><br>
-        {% endfor %}
-        <input type="submit" value="Votar">
-    </form>
+	</head>
+	<body>
+		<header class="title_cont">
+			<article class="title">
+				<h1>MackEnquetes</h1>
+			</article>
+			<article>
+				<h1 class="m">/ M /</h1>
+			</article>
+		</header>
 
-    <a href = "{{ url_for('enquetes.index') }}">Voltar</a>
-  </body>
+		<section class="outter">
+			<article class="title">
+				<h2> - Enquetes - </h2>
+			</article>
+			<section class="formm_cont">
+				{%- for category, message in get_flashed_messages(with_categories = true) %}
+
+					<article class="erro">
+						<p> <strong>{{ message }}</strong></p>
+					</article>
+				{%- endfor %}
+				<section class="formm">
+					<h3> {{ pergunta }}</h3>
+					<form action = "{{ request.path }}" method = "POST">
+						{% for escolha in pergunta.escolha %}
+							<article class="boxes">
+							    <input type="radio" name="escolha" id="escolha{{ loop.index }}" value="{{ escolha.id }}">
+							    <label for="escolha{{ loop.index }}">{{ escolha.texto }}</label>
+							</article>
+						{% endfor %}
+
+						<input type="submit" value="Votar">
+
+					</form>
+					</section>
+				</article>
+			</section>
+			<section class="return">
+				<a href="{{ url_for('enquetes.index') }}">Voltar</a>
+			</section>
+
+			<footer>
+				<article>
+					<p>Powered by</p>
+					<i class="faz">FAZ O WHILE</i>
+				</article>
+			</footer>
+		</section>
+	</body>
 </html>

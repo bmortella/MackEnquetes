@@ -1,18 +1,49 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <title>MackEnquetes</title>
-    <meta charset="utf-8">
-  </head>
-  <body> 
-      
-    <h1>{{ pergunta }}</h1>
 
-      <ul>
-        {% for escolha in pergunta.escolha %}
-          <li>{{ escolha.texto }} -- {{ escolha.votos }} votos</li>
-        {% endfor %} 
-      <ul>
-        <a href = "{{ url_for('enquetes.index') }}">Voltar</a>
-  </body>
+	<head>
+		<title>MackEnquetes</title>
+		<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='../../static/style_resultado.css')}}">
+		<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='../../static/setup.css')}}">
+		<link rel="shortcut icon" type="image/x-icon" href="{{ url_for('static', filename='../../static/img/favicon.ico')}}">
+		<meta charset="utf-8">
+
+	</head>
+	<body>
+		<header class="title_cont">
+			<article class="title">
+				<h1>MackEnquetes</h1>
+			</article>
+			<article>
+				<h1 class="m">/ M /</h1>
+			</article>
+		</header>
+		<section class="outter">
+				<article class="title">
+					<div>
+						<h2>  {{ pergunta }} </h2>
+						<h3> Resultados </h3>
+					</div>
+				</article>
+				<article class="results">
+					<ul>
+						{% for escolha in pergunta.escolha %}
+						    <li>
+						    	<p> {{ escolha.texto }} </p> 
+						    	<p> Votos : {{ escolha.votos }} </p>
+						    </li>
+						{% endfor %}
+					</ul>
+				</article>
+				<section class="return">
+					<a href="{{ url_for('enquetes.index') }}">Voltar</a>
+				</section>
+				<footer>
+					<article>
+						<p>Powered by</p>
+						<i class="faz">FAZ O WHILE</i>
+					</article>
+				</footer>
+		</section>
+	</body>
 </html>

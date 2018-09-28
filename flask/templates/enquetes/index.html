@@ -1,18 +1,55 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <title>MackEnquetes</title>
-    <meta charset="utf-8">
-  </head>
-  <body>
-    {% if enquetes %}
-      <ul>
-          {% for enquete in enquetes %}
-          <li><a href = "{{ url_for('enquetes.detalhes', pergunta_id=enquete.id) }}">{{ enquete.enunciado }}</a></li>
-          {% endfor %}
-      <ul>
-    {% else %}
-      <p>Não há enquetes para mostrar.</p>
-    {% endif %} 
-  </body>
-</html>
+
+	<head>
+		<title>MackEnquetes</title>
+		<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='../../static/style_index.css')}}">
+		<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='../../static/setup.css')}}">
+		<link rel="shortcut icon" type="image/x-icon" href="{{ url_for('static', filename='../../static/img/favicon.ico')}}">
+		<meta charset="utf-8">
+
+	</head>
+	<body>
+		<header class="title_cont">
+			<article class="title">
+				<h1>MackEnquetes</h1>
+			</article>
+			<article>
+				<h1 class="m">/ M /</h1>
+			</article>
+		</header>
+
+		<section class="inner">
+			<article class="title">
+				<h2> - Enquetes -</h2>
+			</article>
+			<article>
+				{% if enquetes %}
+				    <ul>
+				    	<li>
+				    		{% for enquete in enquetes %}
+				    			<a href="{{ url_for('enquetes.detalhes', pergunta_id=enquete.id) }}">{{ enquete.enunciado}}</a>
+							{% endfor %}				    	
+				    	</li>
+				    </ul>
+				{% else %}
+
+					<section class="blank_cont">
+					    <section class="blank_cc">
+					    	<article class="blank"></article>
+					    	<article class="sorry">
+					    		<p>Desculpe, mas estamos sem perguntas ...</p>
+					    	</article>
+					    </section>
+				   	</section>
+				{% endif %}
+			</article>
+		</section>
+		<footer>
+			<article>
+				<p>Powered by</p>
+				<i class="faz">FAZ O WHILE</i>
+			</article>
+		</footer>
+	</body>
+</html>			    		
