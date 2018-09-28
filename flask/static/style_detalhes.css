@@ -1,0 +1,69 @@
+/*Personal use CSS*/
+
+.formm_cont{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+}
+section.formm{
+	background-color: #ececec;
+	width: 260px;
+	height: 150px;
+	padding: 20px;
+	border-radius: 5px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	-webkit-box-shadow: 10px 10px 18px -2px rgba(0,0,0,0.15);
+	-moz-box-shadow: 10px 10px 18px -2px rgba(0,0,0,0.15);
+	box-shadow: 10px 10px 18px -2px rgba(0,0,0,0.15);
+}
+h3{
+	font-size: 22.5px;
+	margin: 0px;
+}
+
+.erro p{
+	color:red;
+	text-align: center;
+	margin: 5px;
+}
+.boxes{
+	margin: 0 0 5px;
+}
+
+.return{
+	display: flex;
+	justify-content: flex-end;
+	margin: 20px 0 0;
+}
+
+form article{
+	padding: 5px;
+}
+article input{
+	margin: 0 5px 0 0;
+	padding: 3px 5px;
+	background-color: #02a902;
+	color: white;
+	border: 0px;
+}
+article input:hover{
+	-webkit-transition: background-color 0.2s ease-in, color 0.2s ease-in;
+	transition: background-color 0.2s ease-in, color 0.2s ease-in;
+	background-color: green;
+	color: white;
+}
+input.reset{
+	background-color: red;
+}
+input.reset:hover{
+	background-color: #db1e1e;
+}
+article.image_cont{
+	height: 300px;
+	width: 400px;
+	display: flex;
+	justify-content: center;
+}

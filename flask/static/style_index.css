@@ -1,0 +1,81 @@
+/* Personal use CSS*/
+
+ul{
+	display: flex;
+	justify-content: center;
+	padding: 70px 0 0;
+}
+li{
+	margin: 10px 10px;
+	height: 80%;
+	width: 60%;
+	background-color: white;
+	border: 1px solid  rgba(255,255,255,1);
+	padding: 2px;
+	border-radius: 7px;
+	-webkit-box-shadow: 10px 10px 18px -2px rgba(0,0,0,0.15);
+	-moz-box-shadow: 10px 10px 18px -2px rgba(0,0,0,0.15);
+	box-shadow: 10px 10px 18px -2px rgba(0,0,0,0.15);
+}
+
+li a{
+	font-size: 20px;
+	margin: 3px;
+	background-color: rgba(0,0,0,0.10);
+	display: block;
+	padding: 5px;
+	-webkit-box-shadow: inset -8px 10px 26px -12px rgba(0,0,0,0.16);
+	-moz-box-shadow: inset -8px 10px 26px -12px rgba(0,0,0,0.15);
+	box-shadow: inset -8px 10px 26px -12px rgba(0,0,0,0.15);
+
+}
+li a:hover{
+	-webkit-transition: background-color 0.2s ease-in;
+	transition: background-color 0.2s ease-in;
+	background-color: #ff0000;
+	color: white;
+}
+.enun{
+	margin: 10px;
+}
+section.blank_cont{
+	padding: 50px 0 0;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-content: center;
+}
+section.blank_cc {
+	background-color: #ececec;
+	width: 50%;
+	border: 1px solid #ececec;
+	border-radius: 7px;
+	max-height: 450px;
+	-webkit-box-shadow: 10px 10px 18px -2px rgba(0,0,0,0.15);
+	-moz-box-shadow: 10px 10px 18px -2px rgba(0,0,0,0.15);
+	box-shadow: 10px 10px 18px -2px rgba(0,0,0,0.15);
+}
+article.blank{
+	background-repeat: no-repeat;
+	background-position: center;
+	background-image: url(img/oldman_c.jpg);
+	height: 280px;
+	width: 100%;
+}
+.sorry p{
+	text-align: center;
+	margin: 0 0 10px;
+	font-size: 15px;
+}
+/* Some screen adjustments*/
+
+@media screen and (min-width: 1100px) {
+	article.blank{
+
+		background-image: url(img/oldman.jpg);
+		height: 360px;
+	}
+	.sorry p{
+		font-size: 20px;
+	}
+}
