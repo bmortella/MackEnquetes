@@ -22,11 +22,11 @@ class NewAdminIndexView(AdminIndexView):
 
 @enquetes.route('/')
 def index():
-   return render_template('index.html', enquetes=Pergunta.query.all())
+   return render_template('enquetes/index.html', enquetes=Pergunta.query.all())
 
 @enquetes.route('/resultados/<int:pergunta_id>')
 def resultados(pergunta_id):
-   return render_template('resultados.html', pergunta=Pergunta.query.get_or_404(pergunta_id))
+   return render_template('enquetes/resultados.html', pergunta=Pergunta.query.get_or_404(pergunta_id))
 
 @enquetes.route('/detalhes/<int:pergunta_id>', methods=['GET', 'POST'])
 def detalhes(pergunta_id):
@@ -38,9 +38,9 @@ def detalhes(pergunta_id):
             escolha.votos = escolha.votos + 1
             db.session.commit()
 
-            return redirect(url_for('resultados', pergunta_id=pergunta_id))
+            return redirect(url_for('enquetes.resultados', pergunta_id=pergunta_id))
 
-    return render_template('detalhes.html', pergunta=Pergunta.query.get_or_404(pergunta_id))
+    return render_template('enquetes/detalhes.html', pergunta=Pergunta.query.get_or_404(pergunta_id))
 
 @enquetes.route('/login', methods=['GET', 'POST'])
 def login():
@@ -62,9 +62,9 @@ def login():
             else:
                 flash('Usuário desconhecido ou senha incorreta')
 
-    return render_template('login.html')
+    return render_template('enquetes/login.html')
 
 @enquetes.route('/logout')
 def logout():
     logout_user()
-    return render_template('logout.html')
+    return render_template('enquetes/logout.html')
