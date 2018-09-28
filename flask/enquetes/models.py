@@ -2,12 +2,7 @@ from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 from flask_login import UserMixin
 
-from enquete_app import app
-
-app.config['SECRET_KEY'] = "randomstring"
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.db'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
-db = SQLAlchemy(app)
+from app import db
 
 class Pergunta(db.Model):
     id = db.Column(db.Integer, primary_key=True)
