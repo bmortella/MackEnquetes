@@ -19,7 +19,7 @@
 				</form>
 			  	{%- for category, message in get_flashed_messages(with_categories = true) %}
 			        <div class="erro">
-			        	<p> {{ message }} </p>
+			        	{{ message }}
 			    	</div>
 			    {%- endfor %}
 			</article>

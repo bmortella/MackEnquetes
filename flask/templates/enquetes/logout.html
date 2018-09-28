@@ -1,8 +1,22 @@
-<meta charset="utf-8">
-</head>
-<body>
-    <h3>Admin Logout</h3>
-    <hr/> 
-    <p>Desconectado</p>
-</body>
-</html>
+<!DOCTYPE html>
+<html lang="pt-br">
+
+	<head>
+		<title>MackEnquetes</title>
+		<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='../../static/style_login.css')}}">
+		<link rel="shortcut icon" type="image/x-icon" href="{{ url_for('static', filename='../../static/img/favicon.ico')}}">
+		<meta charset="utf-8">
+
+	</head>
+	<body>
+		<section class="outter">
+			<article>
+				<h3><i>Usuário Desconectado </i></h3>
+				<p>Até a próxima!</p>
+			</article>
+			<section class="return">
+				<a href="{{ url_for('enquetes.index') }}">Voltar</a>
+			</section>
+		</section>
+	</body>
+</ht
