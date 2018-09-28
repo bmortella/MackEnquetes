@@ -14,7 +14,7 @@ def create_app():
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
     db.init_app(app)
 
-    from enquetes.views import enquetes, NewAdminIndexView, NewModelView
+    from enquetes.views import enquetes, NewAdminIndexView, NewModelView, PerguntaModelView
     app.register_blueprint(enquetes)
 
     #Registra admin
@@ -26,7 +26,7 @@ def create_app():
         return Usuario.query.get(user_id)
 
     admin = Admin(app, index_view=NewAdminIndexView())
-    admin.add_view(NewModelView(Pergunta, db.session))
+    admin.add_view(PerguntaModelView(Pergunta, db.session))
     admin.add_view(NewModelView(Escolha, db.session))
     admin.add_view(NewModelView(Usuario, db.session))
 

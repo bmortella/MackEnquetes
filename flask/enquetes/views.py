@@ -13,6 +13,9 @@ class NewModelView(ModelView):
         return current_user.is_authenticated
     def inaccessible_callback(self, name, **kwargs):
         return redirect(url_for('enquetes.login'))
+
+class PerguntaModelView(ModelView):
+    inline_models = (Escolha,)
     
 class NewAdminIndexView(AdminIndexView):
     def is_accessible(self):
