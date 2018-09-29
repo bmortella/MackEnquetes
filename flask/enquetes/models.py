@@ -9,7 +9,7 @@ class Pergunta(db.Model):
     enunciado = db.Column(db.String(200), unique=True, nullable=False)
     data_pub = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
 
-    escolha = db.relationship('Escolha', backref='pergunta', lazy=False)
+    escolha = db.relationship('Escolha', backref='pergunta', cascade="all,delete", lazy=False)
 
     def __repr__(self):
         return '<Pergunta %r>' % self.enunciado
